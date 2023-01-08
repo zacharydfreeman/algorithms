@@ -40,9 +40,9 @@ const reverseLinkedList1 = (head) => {
 const reverseLinkedList2 = (head, prev = null) => {
     // base case
     if (head === null) return prev;
-    // gran head's next pointer
+    // grab head's next pointer
     const next = head.next;
-    // update heads point to point to prev
+    // update heads pointer to point to prev
     head.next = prev;
     // return recurisve call with next as head and head as prev
     return reverseLinkedList2(next, head);

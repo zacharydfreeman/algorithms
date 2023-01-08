@@ -39,7 +39,7 @@ const staircaseTraversal1 = (height, maxSteps) => {
         if (i >= maxSteps) window -= ways[i - maxSteps]; // only want to subtract from window if current height > maxsteps
     }
 
-    return ways[ways.length - 1];
+    return ways[height];
 }
 
 // Tabulation
@@ -59,7 +59,7 @@ const staircaseTraversal2 = (height, maxSteps) => {
         }
     }
 
-    return ways[ways.length - 1];
+    return ways[height];
 }
 
 
