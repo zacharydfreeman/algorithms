@@ -11,7 +11,7 @@ const mergeSort = (array) => {
     _mergeSort(array, 0, array.length - 1);
     return array;
 }
-// O(nlog(n)) time | O(log(n)) space
+// O(nlog(n)) time | O(nlog(n)) space
 const _mergeSort = (array, startIdx, endIdx) => {
     // base case
     if (startIdx === endIdx) return;
