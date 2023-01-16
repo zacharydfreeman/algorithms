@@ -16,6 +16,7 @@ const longestPalindromicSubstring = (string) => {
     const evenLength = getPalindromeLength(string, i - 1, i);
     // seeing which palindrome is bigger
     const longest = oddLength[1] - oddLength[0] > evenLength[1] - evenLength[0] ? oddLength : evenLength;
+    // update index if longest is bigger than current index
     index = index[1] - index[0] > longest[1] - longest[0] ? index : longest
    }
    return string.slice(index[0], index[1]);
