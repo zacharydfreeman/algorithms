@@ -20,14 +20,10 @@ const merge = (intervals) => {
         const [currentIntervalStart, currentIntervalEnd] = intervals[i];
         // check to see if current start is before current end
         if (currentIntervalStart <= lastIntervalEnd) {
-            // new interval will depend on last interval end and current interval end
-            if (currentIntervalEnd < lastIntervalEnd) {
-                const newInterval = [lastIntervalStart, lastIntervalEnd] // this means current interval was entirely inside last interval
-                mergedIntervals.push(newInterval);
-            } else {
-                const newInterval = [lastIntervalStart, currentIntervalEnd];
-                mergedIntervals.push(newInterval);
-            }
+            // new interval will be min of starts and max of ends
+            const newInterval = [Math.min(lastIntervalStart, currentIntervalStart),
+                                Math.max(lastIntervalEnd, currentIntervalEnd)];
+            mergedIntervals.push(newInterval);
         } else {
             // case where intervals dont overlap add back to stack both intervals
             mergedIntervals.push([lastIntervalStart, lastIntervalEnd]);

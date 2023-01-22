@@ -29,7 +29,7 @@ const eraseOverlapIntervals = (intervals) => {
     // loop through sorted intervals
     for (let i = 1; i < intervals.length; i++) {
         // get last and current interval
-        const [lastStart, lastEnd] = lastInterval;
+        const [_, lastEnd] = lastInterval;
         const [currentStart, currentEnd] = intervals[i];
         // see if there is overlap
         if (currentStart < lastEnd) {
