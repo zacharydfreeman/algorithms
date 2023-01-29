@@ -59,3 +59,8 @@ const nodeSwap2 = (head) => {
     // return nextNode
     return nextNode;
 }
+
+
+const add = (nums) => {
+    
+}

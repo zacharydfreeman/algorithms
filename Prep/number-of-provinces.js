@@ -10,6 +10,12 @@ and the jth city are directly connected, and isConnected[i][j] = 0 otherwise.
 
 Return the total number of provinces.
 
+Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
+Output: 2
+
+Input: isConnected = [[1,0,0],[0,1,0],[0,0,1]]
+Output: 3
+
 */
 
 // Approach: this is essentially a connected components graph problem
@@ -32,6 +38,7 @@ const dfs = (cities, start, visited) => {
     visited.add(start);
     // explore neighbors
     for (let i = 0; i < cities[start].length; i++) {
+        // if i is not the start and the neightbor is 1, then explore that neighbor
         if (i !== start && cities[start][i]) dfs(cities, i, visited);
     }
     // return true if you make it to end

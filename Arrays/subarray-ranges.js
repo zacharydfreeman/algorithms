@@ -19,8 +19,9 @@ So the sum of all ranges is 0 + 0 + 0 + 1 + 1 + 2 = 4.
 
 */
 
+
 // O(n^2) time | O(1) space where n is the lenght of the nums array
-const subArrayRanges = (nums) => {
+const subArrayRanges2 = (nums) => {
     // delcare total variable
     let total = 0;
     // loop through nums to get all subarrays
