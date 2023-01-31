@@ -34,31 +34,28 @@ Output: 3
 
 // [1, 2, 3, 1]
 const rob = (nums) => {
-    if (nums.length === 0) return 0;
-    if (nums.length === 1) return nums[0];
-    const newArray1 = nums.slice(0, nums.length - 1);
-    const newArray2 = nums.slice(1, nums.length);
-    let ans1 = _rob(newArray1);
-    let ans2 = _rob(newArray2);
-    return Math.max(ans1, ans2);
-}
-
-const _rob = function(nums) {
-    // max non adjacent num
-    if (nums.length === 0) return 0;
-    if (nums.length === 1) return nums[0];
-
-    const maxSums = new Array(nums.length);
-    maxSums[0] = nums[0];
-    maxSums[1] = nums[0] > nums[1] ? nums[0] : nums[1];
-
-    for (let i = 2; i < nums.length; i++) {
-        maxSums[i] = Math.max(maxSums[i - 1], nums[i] + maxSums[i - 2])
-
-    }
-    return maxSums[maxSums.length - 1];
-
-
+  if (nums.length === 0) return 0;
+  if (nums.length === 1) return nums[0];
+  const newArray1 = nums.slice(0, nums.length - 1);
+  const newArray2 = nums.slice(1, nums.length);
+  let ans1 = _rob(newArray1);
+  let ans2 = _rob(newArray2);
+  return Math.max(ans1, ans2);
 };
 
-console.log(rob([2, 3, 2]))
+const _rob = function (nums) {
+  // max non adjacent num
+  if (nums.length === 0) return 0;
+  if (nums.length === 1) return nums[0];
+
+  const maxSums = new Array(nums.length);
+  maxSums[0] = nums[0];
+  maxSums[1] = nums[0] > nums[1] ? nums[0] : nums[1];
+
+  for (let i = 2; i < nums.length; i++) {
+    maxSums[i] = Math.max(maxSums[i - 1], nums[i] + maxSums[i - 2]);
+  }
+  return maxSums[maxSums.length - 1];
+};
+
+console.log(rob([2, 3, 2]));

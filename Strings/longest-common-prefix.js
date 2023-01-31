@@ -13,19 +13,19 @@ Explanation: There is no common prefix among the input strings.
 
 // O(n*m) time | O(m) space where n is length of strs array and m is length of longest string
 const longestCommonPrefix = (strs) => {
-    let output = "";
-    let idx = 0;
-    // you can go until an arbitray string length
-    while (idx < strs[0].length) {
-        for (let i = 1; i < strs.length; i++) {
-            if (strs[i][idx] !== strs[i - 1][idx]) return output;
-        }
-        output += strs[0][idx]
-        idx++;
+  let output = "";
+  let idx = 0;
+  // you can go until an arbitray string length
+  while (idx < strs[0].length) {
+    for (let i = 1; i < strs.length; i++) {
+      if (strs[i][idx] !== strs[i - 1][idx]) return output;
     }
+    output += strs[0][idx];
+    idx++;
+  }
 
-    return output;
-}
+  return output;
+};
 
-const strs = ["flower","flow","flight"]
+const strs = ["flower", "flow", "flight"];
 console.log(longestCommonPrefix([""]));

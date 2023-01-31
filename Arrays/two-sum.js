@@ -17,25 +17,24 @@ pairSum([1, 6, 7, 2], 13); // -> [1, 2]
 //use nested for loops to add each num in the arr to one arr element at a time
 // when the curr i sums to the tar with the curr j return the indices of each in an arr
 
-
 // O(n) time | O(n) space where n is the length of the array
 const pairSum = (array, target) => {
-    // declare a numbers map that will track what numbers we've visted and at what indexes
-    const numbers = {};
-    // loop through array
-    for (let i = 0; i < array.length; i++) {
-        const complement = target - array[i]
-        // check if complement exists in map
-        if (complement in numbers) return [numbers[complement], i];
-        numbers[array[i]] = i;
-    }
-}
+  // declare a numbers map that will track what numbers we've visted and at what indexes
+  const numbers = {};
+  // loop through array
+  for (let i = 0; i < array.length; i++) {
+    const complement = target - array[i];
+    // check if complement exists in map
+    if (complement in numbers) return [numbers[complement], i];
+    numbers[array[i]] = i;
+  }
+};
 
 // O(n^2) time | O(1) space where n is the length of the array
 const pairSum2 = (array, target) => {
-    for (let i = 0; i < array.length - 1; i++) {
-        for (let j = i + 1; j < array.length; j++) {
-            if (array[i] + array[j] === target) return [i, j];
-        }
+  for (let i = 0; i < array.length - 1; i++) {
+    for (let j = i + 1; j < array.length; j++) {
+      if (array[i] + array[j] === target) return [i, j];
     }
-}
+  }
+};

@@ -21,23 +21,23 @@ Explanation: We flip to get 00000000.
 
 // O(n) time | O(1) space
 const minFlipsMonoIncr = (s) => {
-    // declare number of flips and number of ones variables
-    let flips = 0;
-    let ones = 0; // these are our potential flips
-    // loop through string
-    for (let char of s) {
-        // if char is 1, just increment one count
-        if (char === "1") {
-            // increment ones
-            ones++;
-        } else if (ones > 0) {
-            // if char is 0 and one is greater than zero then we have to make a flip
-            flips++;
-            ones--;
-        }
+  // declare number of flips and number of ones variables
+  let flips = 0;
+  let ones = 0; // these are our potential flips
+  // loop through string
+  for (let char of s) {
+    // if char is 1, just increment one count
+    if (char === "1") {
+      // increment ones
+      ones++;
+    } else if (ones > 0) {
+      // if char is 0 and one is greater than zero then we have to make a flip
+      flips++;
+      ones--;
     }
+  }
 
-    return flips;
-}
+  return flips;
+};
 
 console.log(minFlipsMonoIncr("00011000"));

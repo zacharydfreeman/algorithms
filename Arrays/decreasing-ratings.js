@@ -19,23 +19,23 @@ Ratings = [4, 2, 3, 1] => 4
 
 // Approach: two pointers
 const decreasingRatings = (ratings) => {
-    // declare a count variable
-    let count = 0;
-    // declare two pointer that will be start and end of subarray
-    let i = 0;
-    let j = 1;
-    while (j < ratings.length) {
-        // if rating is consecutively decreasing, it is in the same group
-        if (ratings[j - 1] - ratings[j] === 1) {
-            count += j - i;
-        } else {
-            // update pointers
-            i = j;
-        }
-        j++;
+  // declare a count variable
+  let count = 0;
+  // declare two pointer that will be start and end of subarray
+  let i = 0;
+  let j = 1;
+  while (j < ratings.length) {
+    // if rating is consecutively decreasing, it is in the same group
+    if (ratings[j - 1] - ratings[j] === 1) {
+      count += j - i;
+    } else {
+      // update pointers
+      i = j;
     }
-    return count + ratings.length;
-}
+    j++;
+  }
+  return count + ratings.length;
+};
 
 const ratings1 = [4, 3, 5, 4, 3]; // 9
 const ratings2 = [2, 1, 3]; // 4

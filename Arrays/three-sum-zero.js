@@ -18,34 +18,34 @@ Notice that the order of the output and the order of the triplets does not matte
 // Approach: Sort the array and its easier to not get duplicates
 // O(n^2) time | O(n) space
 const threeSum = (nums) => {
-    // sort
-    nums.sort((a, b) => a - b);
-    // declare output variable
-    const output = [];
-    // loop through array
-    for (let i = 0; i < nums.length - 2; i++) {
-        let num = nums[i];
-        // if i is same as num before, continue. You dont want to check the same number
-        if (i > 0 && nums[i] === nums[i - 1]) continue;
-        // declare two pointers
-        let l = i + 1;
-        let r = nums.length - 1;
-        while (l < r) {
-            // calculate sum
-            const sum = num + nums[l] + nums[r];
-            if (sum === 0) {
-                output.push([num, nums[l], nums[r]]);
-                // update left pointer. Has to go to next number that is not equal to current number
-                l++;
-                while (nums[l] === nums[l - 1] && l < r) {
-                    l++;
-                }
-            } else if (sum > 0) {
-                r--;
-            } else {
-                l++;
-            }
+  // sort
+  nums.sort((a, b) => a - b);
+  // declare output variable
+  const output = [];
+  // loop through array
+  for (let i = 0; i < nums.length - 2; i++) {
+    let num = nums[i];
+    // if i is same as num before, continue. You dont want to check the same number
+    if (i > 0 && nums[i] === nums[i - 1]) continue;
+    // declare two pointers
+    let l = i + 1;
+    let r = nums.length - 1;
+    while (l < r) {
+      // calculate sum
+      const sum = num + nums[l] + nums[r];
+      if (sum === 0) {
+        output.push([num, nums[l], nums[r]]);
+        // update left pointer. Has to go to next number that is not equal to current number
+        l++;
+        while (nums[l] === nums[l - 1] && l < r) {
+          l++;
         }
+      } else if (sum > 0) {
+        r--;
+      } else {
+        l++;
+      }
     }
-    return output;
-}
+  }
+  return output;
+};

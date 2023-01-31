@@ -19,23 +19,22 @@ So the sum of all ranges is 0 + 0 + 0 + 1 + 1 + 2 = 4.
 
 */
 
-
 // O(n^2) time | O(1) space where n is the lenght of the nums array
 const subArrayRanges2 = (nums) => {
-    // delcare total variable
-    let total = 0;
-    // loop through nums to get all subarrays
-    for (let i = 0; i < nums.length - 1; i++) {
-        // need to declare a largest and smallest num. Set initially to current num
-        let largest = nums[i];
-        let smallest = nums[i];
-        // get different sub arrays
-        for (let j = i + 1; j < nums.length; j++) {
-            // update largest and smallest
-            largest = Math.max(largest, nums[j]);
-            smallest = Math.min(smallest, nums[j]);
-            total += largest - smallest;
-        }
+  // delcare total variable
+  let total = 0;
+  // loop through nums to get all subarrays
+  for (let i = 0; i < nums.length - 1; i++) {
+    // need to declare a largest and smallest num. Set initially to current num
+    let largest = nums[i];
+    let smallest = nums[i];
+    // get different sub arrays
+    for (let j = i + 1; j < nums.length; j++) {
+      // update largest and smallest
+      largest = Math.max(largest, nums[j]);
+      smallest = Math.min(smallest, nums[j]);
+      total += largest - smallest;
     }
-    return total;
-}
+  }
+  return total;
+};

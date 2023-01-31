@@ -29,42 +29,41 @@ Explanation: The grid looks as follows:
 Column 0 is the only column and is sorted, so you will not delete any columns.
 */
 
-
 // O(n*m) time | O(1) space where n is length of the array and m is the length of the string
 const minDeletionSize = (strs) => {
-    // declare count variable
-    let count = 0;
-    // loop through strs starting with columns
-    for (let col = 0; col < strs[0].length; col++) {
-        // start row loop at row 1 and compare letters
-        for (let row = 1; row < strs.length; row++) {
-            // compare letters
-            if (strs[row][col] < strs[row - 1][col]) {
-                count++;
-                break;
-            }
-        }
+  // declare count variable
+  let count = 0;
+  // loop through strs starting with columns
+  for (let col = 0; col < strs[0].length; col++) {
+    // start row loop at row 1 and compare letters
+    for (let row = 1; row < strs.length; row++) {
+      // compare letters
+      if (strs[row][col] < strs[row - 1][col]) {
+        count++;
+        break;
+      }
     }
-    return count;
-}
+  }
+  return count;
+};
 
-const strs = ["cba","daf","ghi"];
+const strs = ["cba", "daf", "ghi"];
 console.log(minDeletionSize(strs));
 
 // O(m*n*log(n)) time | O(m) space
 const minDeletionSize2 = (strs) => {
-    // declare variable count to be 0
-    let count = 0;
-    // loop through strs starting with columns
-    for (let col = 0; col < strs[0].length; col++) {
-        let tempStr = [];
-        for (let row = 0; row < strs.length; row++) {
-            tempStr.push(strs[row][col]);
-        }
-        // check if reversed string equal to temp str
-        if (tempStr.join("") !== tempStr.sort().join("")) {
-            count++;
-        }
+  // declare variable count to be 0
+  let count = 0;
+  // loop through strs starting with columns
+  for (let col = 0; col < strs[0].length; col++) {
+    let tempStr = [];
+    for (let row = 0; row < strs.length; row++) {
+      tempStr.push(strs[row][col]);
     }
-    return count;
-}
+    // check if reversed string equal to temp str
+    if (tempStr.join("") !== tempStr.sort().join("")) {
+      count++;
+    }
+  }
+  return count;
+};

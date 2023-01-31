@@ -1,5 +1,5 @@
 /*
-You are with your friends in a castle, where there are multiple rooms named after flowers. 
+You are with your friends in a castle, where there are multiple rooms named after flowers.
 Some of the rooms contain treasures - we call them the treasure rooms.
 
 Each room contains a single instruction that tells the player which room to go to next.
@@ -71,39 +71,37 @@ filter_rooms(treasure_rooms_3, instructions_2)    => [tulip]
 
 */
 
-
 // O(n + m) time | O(n + m) space where n is length of instructions and m is length of treasure rooms
 const filterRooms = (instructions, treasureRooms) => {
-    // create object => {room: [array of rooms that point to this room]}
-    const roomsObject = createRoomsObject(instructions);
-    // create set of treasure rooms
-    const treasureRoomsSet = new Set(treasureRooms);
-    // set that will hold the rooms that have multiple rooms leading to it
-    const roomsWithMultipleSources = new Set();
-    const rooms = [];
-    // loop through obj and put into roomsWithMultipleSources if obj[room].lenght > 1
-    for (let room in roomsObject) {
-        if (roomsObject[room].length > 1) roomsWithMultipleSources.add(room);
+  // create object => {room: [array of rooms that point to this room]}
+  const roomsObject = createRoomsObject(instructions);
+  // create set of treasure rooms
+  const treasureRoomsSet = new Set(treasureRooms);
+  // set that will hold the rooms that have multiple rooms leading to it
+  const roomsWithMultipleSources = new Set();
+  const rooms = [];
+  // loop through obj and put into roomsWithMultipleSources if obj[room].lenght > 1
+  for (let room in roomsObject) {
+    if (roomsObject[room].length > 1) roomsWithMultipleSources.add(room);
+  }
+  // loop through instructions and see if room1 is in multiple sources and then check if rooms lead to a treasure room
+  for (let instruction of instructions) {
+    const [room1, room2] = instruction;
+    if (roomsWithMultipleSources.has(room1) && treasureRoomsSet.has(room2)) {
+      rooms.push(room1);
     }
-    // loop through instructions and see if room1 is in multiple sources and then check if rooms lead to a treasure room
-    for (let instruction of instructions) {
-        const [room1, room2] = instruction;
-        if (roomsWithMultipleSources.has(room1) && treasureRoomsSet.has(room2)) {
-            rooms.push(room1);
-        }
-    }
+  }
 
-    return rooms;
-}
+  return rooms;
+};
 
 const createRoomsObject = (instructions) => {
-    const roomsObject = {};
-    for (let instruction of instructions) {
-        const [room1, room2] = instruction;
-        if (room1 === room2) continue;
-        if (!(room2 in roomsObject)) roomsObject[room2] = [];
-        roomsObject[room2].push(room1);
-    }
-    return roomsObject
-}
-
+  const roomsObject = {};
+  for (let instruction of instructions) {
+    const [room1, room2] = instruction;
+    if (room1 === room2) continue;
+    if (!(room2 in roomsObject)) roomsObject[room2] = [];
+    roomsObject[room2].push(room1);
+  }
+  return roomsObject;
+};

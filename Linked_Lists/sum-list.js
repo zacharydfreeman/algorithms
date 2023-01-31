@@ -18,23 +18,22 @@ d.next = e;
 sumList(a); // 19
 */
 
-
 class Node {
-    constructor(value) {
-        this.value = value;
-        this.next = null;
-    }
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
 }
 
 // O(n) time | O(1) space
 const sumList = (head) => {
-    // declare total and current node variable
-    let current = head;
-    let total = 0;
-    // traverse list
-    while (current) {
-        total += current.value;
-        current = current.next;
-    }
-    return total;
-}
+  // declare total and current node variable
+  let current = head;
+  let total = 0;
+  // traverse list
+  while (current) {
+    total += current.value;
+    current = current.next;
+  }
+  return total;
+};

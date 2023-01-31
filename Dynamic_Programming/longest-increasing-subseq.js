@@ -10,42 +10,42 @@ Explanation: The longest increasing subsequence is [2,3,7,101], therefore the le
 // Approach: Dynamic programming
 // O(n^2) time | O(n) space
 const lengthOfLIS = (nums) => {
-    // declare a DP array that will be the length of LIS at that index using that number
-    const longest = new Array(nums.length).fill(1); // fill with 1 to start
-    // declare a max index variable to track the longest subsequence
-    let maxIdx = 0;
-    for (let i = 1; i < nums.length; i++) {
-        for (let j = 0 ; j < i; j++) {
-            if (nums[i] > nums[j]) {
-                longest[i] = Math.max(longest[i], longest[j] + 1);
-            }
-        }
-        // update maxIdx
-        maxIdx = longest[i] > longest[maxIdx] ? i : maxIdx;
+  // declare a DP array that will be the length of LIS at that index using that number
+  const longest = new Array(nums.length).fill(1); // fill with 1 to start
+  // declare a max index variable to track the longest subsequence
+  let maxIdx = 0;
+  for (let i = 1; i < nums.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (nums[i] > nums[j]) {
+        longest[i] = Math.max(longest[i], longest[j] + 1);
+      }
     }
-    return longest[maxIdx];
-}
+    // update maxIdx
+    maxIdx = longest[i] > longest[maxIdx] ? i : maxIdx;
+  }
+  return longest[maxIdx];
+};
 
 // Approach: Recursive
 // O(n^2) time | O(n^2) space
 const lengthOfLIS2 = (nums, idx = 0, priorNum = -Infinity, memo = {}) => {
-    // memoization
-    const key = idx + "," + priorNum;
-    if (key in memo) return memo[key];
-    // base case if idx is length of nums return 0
-    if (idx === nums.length) return 0;
-    // declare an options array that will hold results from using the current number and not using the current number
-    const options = [];
-    // recursive call if you take the first number
-    const currentNum = nums[idx];
-    if (currentNum > priorNum) {
-        const takeResult = 1 + lengthOfLIS2(nums, idx + 1, currentNum, memo);
-        options.push(takeResult);
-    }
-    // recurisve call if you dont use first number
-    const dontTakeResult = lengthOfLIS2(nums, idx + 1, priorNum, memo);
-    options.push(dontTakeResult);
-    // longest increasing subseq is going to be max of both results
-    memo[key] = Math.max(...options);
-    return memo[key];
-}
+  // memoization
+  const key = idx + "," + priorNum;
+  if (key in memo) return memo[key];
+  // base case if idx is length of nums return 0
+  if (idx === nums.length) return 0;
+  // declare an options array that will hold results from using the current number and not using the current number
+  const options = [];
+  // recursive call if you take the first number
+  const currentNum = nums[idx];
+  if (currentNum > priorNum) {
+    const takeResult = 1 + lengthOfLIS2(nums, idx + 1, currentNum, memo);
+    options.push(takeResult);
+  }
+  // recurisve call if you dont use first number
+  const dontTakeResult = lengthOfLIS2(nums, idx + 1, priorNum, memo);
+  options.push(dontTakeResult);
+  // longest increasing subseq is going to be max of both results
+  memo[key] = Math.max(...options);
+  return memo[key];
+};

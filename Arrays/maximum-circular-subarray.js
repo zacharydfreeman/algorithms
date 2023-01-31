@@ -24,9 +24,8 @@ Explanation: Subarray [-2] has maximum sum -2.
  */
 
 // Approach: Kadane's algo + two pointers
-const maxSubarraySumCircular  = (nums) => {
-    // declare two pointers
-    
-}
+const maxSubarraySumCircular = (nums) => {
+  // declare two pointers
+};
 
 console.log(maxSubarraySumCircular([5, -3, 5]));

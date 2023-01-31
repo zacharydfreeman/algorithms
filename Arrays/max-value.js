@@ -9,13 +9,12 @@ You can assume that the array is non-empty.
 maxValue([4, 7, 2, 8, 10, 9]); // -> 10
 */
 
-
 // O(n) time | O(1) space
 const maxValue = (nums) => {
-    let max = Infinity; // declare a max variable
+  let max = Infinity; // declare a max variable
 
-    for (let num of nums) {
-        max = Math.max(num, max); // update max
-    }
-    return max;
-}
+  for (let num of nums) {
+    max = Math.max(num, max); // update max
+  }
+  return max;
+};

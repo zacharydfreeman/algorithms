@@ -18,32 +18,32 @@ Explanation: The sum that is closest to the target is 0. (0 + 0 + 0 = 0).
 // Approach: Sort array and use two pointers
 // O(n^2) time | O(1) space
 const threeSumClosest = (nums, target) => {
-    // sort array
-    nums.sort((a, b) => a - b);
-    // declare closest and difference variable
-    let closest = Infinity;
-    let difference = Infinity;
-    for (let i = 0; i < nums.length - 2; i++) {
-        // declare two pointers
-        let l = i + 1;
-        let r = nums.length - 1;
-        while (l < r) {
-            // calculate current sum
-            const sum = nums[i] + nums[l] + nums[r];
-            // if sum === target return target
-            if (sum === target) return target;
-            if (Math.abs(sum - target) < difference) {
-                closest = sum;
-                difference = Math.abs(sum - target)
-            }
-            // update pointers
-            if (sum > target) {
-                r--;
-            } else {
-                l++
-            }
-        }
+  // sort array
+  nums.sort((a, b) => a - b);
+  // declare closest and difference variable
+  let closest = Infinity;
+  let difference = Infinity;
+  for (let i = 0; i < nums.length - 2; i++) {
+    // declare two pointers
+    let l = i + 1;
+    let r = nums.length - 1;
+    while (l < r) {
+      // calculate current sum
+      const sum = nums[i] + nums[l] + nums[r];
+      // if sum === target return target
+      if (sum === target) return target;
+      if (Math.abs(sum - target) < difference) {
+        closest = sum;
+        difference = Math.abs(sum - target);
+      }
+      // update pointers
+      if (sum > target) {
+        r--;
+      } else {
+        l++;
+      }
     }
+  }
 
-    return closest;
-}
+  return closest;
+};

@@ -17,72 +17,71 @@ Output: [4, 9]
 // Approach: we will use binary search twice. Once to find the left most index. Once to find the right most index
 // O(log(n)) time | O(1) space where n is length of the array. This is cleaner solution than the second one
 const searchForRange = (array, target) => {
-    const leftIdx = specialBinarySearch(array, target, true); // Use binary search to find left most Idx
-    const rightIdx = specialBinarySearch(array, target, false); // use binary search to find right most Idx
-    return [leftIdx, rightIdx];
-}
+  const leftIdx = specialBinarySearch(array, target, true); // Use binary search to find left most Idx
+  const rightIdx = specialBinarySearch(array, target, false); // use binary search to find right most Idx
+  return [leftIdx, rightIdx];
+};
 
 const specialBinarySearch = (array, target, goLeft) => {
-    let left = 0;
-    let right = array.length - 1;
-    // initialize idx = -1 in case we dont find the target
-    let idx = -1;
+  let left = 0;
+  let right = array.length - 1;
+  // initialize idx = -1 in case we dont find the target
+  let idx = -1;
 
-    while (left <= right) {
-        const mid = Math.floor((left + right) / 2);
-        if (array[mid] === target) {
-            idx = mid;
-            if (goLeft) {
-                right = mid - 1; // if we are going left we have to change the right pointer
-            } else {
-                left = mid + 1; // if we are not going left (i.e going right) we have to chnage the left pointer
-            }
-        } else if (array[mid] < target) {
-            left = mid + 1;
-        } else {
-            right = mid - 1;
-        }
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (array[mid] === target) {
+      idx = mid;
+      if (goLeft) {
+        right = mid - 1; // if we are going left we have to change the right pointer
+      } else {
+        left = mid + 1; // if we are not going left (i.e going right) we have to chnage the left pointer
+      }
+    } else if (array[mid] < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
     }
+  }
 
-    return idx;
-}
-
+  return idx;
+};
 
 // O(log(n)) time | O(1) space
 const searchForRange2 = (array, target) => {
-    // Use binary search to find the left Idx;
-    let left = 0;
-    let right = array.length - 1;
-    let leftIdx = -1;
+  // Use binary search to find the left Idx;
+  let left = 0;
+  let right = array.length - 1;
+  let leftIdx = -1;
 
-    while (left <= right) {
-        const mid = Math.floor((left + right) / 2);
-        if (array[mid] === target) {
-            leftIdx = mid;
-            right = mid - 1; // we have to continue on even if we found target to make sure we get left most idx
-        } else if (array[mid] < target) {
-            left = mid + 1;
-        } else {
-            right = mid - 1;
-        }
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (array[mid] === target) {
+      leftIdx = mid;
+      right = mid - 1; // we have to continue on even if we found target to make sure we get left most idx
+    } else if (array[mid] < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
     }
+  }
 
-    // update variables to start binary search to find right Idx
-    left = 0;
-    right = array.length - 1;
-    let rightIdx = -1;
+  // update variables to start binary search to find right Idx
+  left = 0;
+  right = array.length - 1;
+  let rightIdx = -1;
 
-    while (left <= right) {
-        const mid = Math.floor((left + right) / 2);
-        if (array[mid] === target) {
-            rightIdx = mid;
-            left = mid + 1; // we have to continue on even if we found target to make sure we get right most idx
-        } else if (array[mid] < target) {
-            left = mid + 1;
-        } else {
-            right = mid - 1;
-        }
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (array[mid] === target) {
+      rightIdx = mid;
+      left = mid + 1; // we have to continue on even if we found target to make sure we get right most idx
+    } else if (array[mid] < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
     }
+  }
 
-    return [leftIdx, rightIdx];
-}
+  return [leftIdx, rightIdx];
+};

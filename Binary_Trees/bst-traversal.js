@@ -21,40 +21,40 @@ postOrder = [1, 2, 5, 5, 22, 15, 10]
 // left, self, right
 // O(n) time | O(n) space
 const inOrderTraverse = (tree, array) => {
-    // base case
-    if (tree === null) return array;
-    // go down left subtree
-    inOrderTraverse(tree.left, array);
-    // push self
-    array.push(tree.value);
-    // go down right subtree
-    inOrderTraverse(tree.right, array);
-    return array;
-}
+  // base case
+  if (tree === null) return array;
+  // go down left subtree
+  inOrderTraverse(tree.left, array);
+  // push self
+  array.push(tree.value);
+  // go down right subtree
+  inOrderTraverse(tree.right, array);
+  return array;
+};
 
 // self, left, right
 // O(n) time | O(n) space
 const preOrderTraverse = (tree, array) => {
-    // base case
-    if (tree === null) return array;
-    // push self
-    array.push(tree.value);
-    // go down left subtree
-    preOrderTraverse(tree.left, array);
-    // go down right subtree
-    preOrderTraverse(tree.right, array);
-    return array;
-}
+  // base case
+  if (tree === null) return array;
+  // push self
+  array.push(tree.value);
+  // go down left subtree
+  preOrderTraverse(tree.left, array);
+  // go down right subtree
+  preOrderTraverse(tree.right, array);
+  return array;
+};
 
 // left, right self
 const postOrderTraverse = (tree, array) => {
-    // base case
-    if (tree === null) return array;
-    // go down left subtree
-    postOrderTraverse(tree.left, array);
-    // go down righ subtree
-    postOrderTraverse(tree.right, array);
-    // push self
-    array.push(tree.value);
-    return array;
-}
+  // base case
+  if (tree === null) return array;
+  // go down left subtree
+  postOrderTraverse(tree.left, array);
+  // go down righ subtree
+  postOrderTraverse(tree.right, array);
+  // push self
+  array.push(tree.value);
+  return array;
+};

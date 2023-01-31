@@ -18,36 +18,36 @@ These are the only two combinations.
 */
 // O(2^n) time | O(2^n) space
 const combinationSum = (candidates, target, idx = 0) => {
-    // base cases => if target === 0 return empty 2d array
-    if (target === 0) return [[]];
-    // base case if no more candidate or target < 0 return an empty array
-    if (idx === candidates.length || target < 0) return [];
-    // grab current candidate and declare output array
-    const currentCandidate = candidates[idx];
-    const output = []
-    // make recursive call that includes the current candidate
-    const includes = combinationSum(candidates, target - currentCandidate, idx);
-    // loop through results of includes
-    for (let include of includes) {
-        // create copy of array becuase arrays are passed by reference
-        const newArr = [...include]
-        // add current candidate and add to output array
-        newArr.push(currentCandidate);
-        output.push(newArr);
-    }
+  // base cases => if target === 0 return empty 2d array
+  if (target === 0) return [[]];
+  // base case if no more candidate or target < 0 return an empty array
+  if (idx === candidates.length || target < 0) return [];
+  // grab current candidate and declare output array
+  const currentCandidate = candidates[idx];
+  const output = [];
+  // make recursive call that includes the current candidate
+  const includes = combinationSum(candidates, target - currentCandidate, idx);
+  // loop through results of includes
+  for (let include of includes) {
+    // create copy of array becuase arrays are passed by reference
+    const newArr = [...include];
+    // add current candidate and add to output array
+    newArr.push(currentCandidate);
+    output.push(newArr);
+  }
 
-    // make recursive call that doesnt include the current candidate
-    const dontIncludes = combinationSum(candidates, target, idx + 1);
-    // loop through results of not including the candidate
-    for (let dontInclude of dontIncludes) {
-        // create copy of array and add to output
-        const newArr = [...dontInclude];
-        output.push(newArr);
-    }
+  // make recursive call that doesnt include the current candidate
+  const dontIncludes = combinationSum(candidates, target, idx + 1);
+  // loop through results of not including the candidate
+  for (let dontInclude of dontIncludes) {
+    // create copy of array and add to output
+    const newArr = [...dontInclude];
+    output.push(newArr);
+  }
 
-    return output;
-}
-const candidates = [2, 3, 6, 7]
-const target = 7 // Output: [[2,2,3],[7]]
+  return output;
+};
+const candidates = [2, 3, 6, 7];
+const target = 7; // Output: [[2,2,3],[7]]
 
 console.log(combinationSum(candidates, target));

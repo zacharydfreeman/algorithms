@@ -26,54 +26,54 @@ Output: -1
 // the judge will have 0 outbound edges and n - 1 inbound edges
 // O(n + e) time | O(n) space
 const findJudge = (n, trust) => {
-    // declare inbound and outbound arrays
-    const inDegree = new Array(n).fill(0);
-    const outDegree = new Array(n).fill(0);
-    // populate arrays
-    for (let pair of trust) {
-        [a, b] = pair
-        outDegree[a - 1]++;
-        inDegree[b - 1]++;
-    }
-    // declare judge variable
-    let judge = -1;
-    for (let i = 1; i <= n; i++) {
-        if (inDegree[i - 1] === n - 1 && outDegree[i - 1] === 0) judge = i;
-    }
-    return judge;
-}
+  // declare inbound and outbound arrays
+  const inDegree = new Array(n).fill(0);
+  const outDegree = new Array(n).fill(0);
+  // populate arrays
+  for (let pair of trust) {
+    [a, b] = pair;
+    outDegree[a - 1]++;
+    inDegree[b - 1]++;
+  }
+  // declare judge variable
+  let judge = -1;
+  for (let i = 1; i <= n; i++) {
+    if (inDegree[i - 1] === n - 1 && outDegree[i - 1] === 0) judge = i;
+  }
+  return judge;
+};
 
 // Approach: More of a brute force approach
 // O(n + e) time | O(n + e) space
-const findJudge2 = function(n, trust) {
-    if (trust.length === 0) {
-        if (n === 1) {
-            return n
-        } else {
-            return -1;
-        }
+const findJudge2 = function (n, trust) {
+  if (trust.length === 0) {
+    if (n === 1) {
+      return n;
+    } else {
+      return -1;
     }
-    // create a trust map
-    const trustMap = {};
-    // populate trust map
-    for (let pair of trust) {
-        const [a, b] = pair
-        if (!(a in trustMap)) trustMap[a] = new Set();
-        trustMap[a].add(b);
+  }
+  // create a trust map
+  const trustMap = {};
+  // populate trust map
+  for (let pair of trust) {
+    const [a, b] = pair;
+    if (!(a in trustMap)) trustMap[a] = new Set();
+    trustMap[a].add(b);
+  }
+  // dget potential judge
+  let potentialJudge = -1;
+  // loop through 1 to n and if n doesnt exist in map, return
+  for (let i = 1; i <= n; i++) {
+    if (!(i in trustMap)) {
+      potentialJudge = i;
+      continue;
     }
-    // dget potential judge
-    let potentialJudge = -1;
-    // loop through 1 to n and if n doesnt exist in map, return
-    for (let i = 1; i <= n; i++) {
-        if (!(i in trustMap)) {
-            potentialJudge = i;
-            continue;
-        }
-    }
+  }
 
-    // need to check for every key in trust map, includes potential judge
-    for (let key in trustMap) {
-        if (!trustMap[key].has(potentialJudge)) return -1;
-    }
-    return potentialJudge;
+  // need to check for every key in trust map, includes potential judge
+  for (let key in trustMap) {
+    if (!trustMap[key].has(potentialJudge)) return -1;
+  }
+  return potentialJudge;
 };

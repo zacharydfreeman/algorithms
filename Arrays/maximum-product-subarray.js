@@ -18,19 +18,19 @@ Explanation: The result cannot be 2, because [-2,-1] is not a subarray.
 
 // O(n) time | O(1) space
 const maxProduct = (nums) => {
-    // delcare current min, current max variables and max variable
-    let currentMin = 1;
-    let currentMax = 1;
-    let max = -Infinity;
-    // loop through array
-    for (let num of nums) {
-        // grab old min to make sure you dont lose reference
-        const min = currentMin;
-        // update min and max at each point
-        currentMin = Math.min(num * currentMin, num * currentMax, num);
-        currentMax = Math.max(num * min, num * currentMax, num);
-        max = Math.max(max, currentMin, currentMax);
-    }
+  // delcare current min, current max variables and max variable
+  let currentMin = 1;
+  let currentMax = 1;
+  let max = -Infinity;
+  // loop through array
+  for (let num of nums) {
+    // grab old min to make sure you dont lose reference
+    const min = currentMin;
+    // update min and max at each point
+    currentMin = Math.min(num * currentMin, num * currentMax, num);
+    currentMax = Math.max(num * min, num * currentMax, num);
+    max = Math.max(max, currentMin, currentMax);
+  }
 
-    return max;
-}
+  return max;
+};
