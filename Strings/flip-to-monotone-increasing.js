@@ -36,8 +36,5 @@ const minFlipsMonoIncr = (s) => {
       ones--;
     }
   }
-
   return flips;
 };
-
-console.log(minFlipsMonoIncr("00011000"));

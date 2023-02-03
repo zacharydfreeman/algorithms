@@ -110,9 +110,3 @@ const findDuplicate = (array) => {
     array[val - 1] *= -1;
   }
 };
-
-const nums = [1, 3, 4, 2, 2]; // => 2
-const nums2 = [3, 1, 3, 4, 2]; // => 3
-const nums3 = [1, 5, 4, 3, 6, 2, 4, 7]; // => 4
-
-console.log(findDuplicate(nums), findDuplicate(nums2), findDuplicate(nums3));

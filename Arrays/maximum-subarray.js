@@ -29,7 +29,7 @@ const maxSubArray = (nums) => {
   return maxSum;
 };
 
-console.log(maxSubArray([5, -3, 5, 5, -3]));
+
 // O(n^2) time | O(1) space
 const maxSubArray2 = (nums) => {
   // declare max sum variable to -Infinity

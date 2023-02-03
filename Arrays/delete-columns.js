@@ -47,8 +47,6 @@ const minDeletionSize = (strs) => {
   return count;
 };
 
-const strs = ["cba", "daf", "ghi"];
-console.log(minDeletionSize(strs));
 
 // O(m*n*log(n)) time | O(m) space
 const minDeletionSize2 = (strs) => {

@@ -58,18 +58,3 @@ class Node {
     this.next = null;
   }
 }
-
-const one = new Node(2);
-const four = new Node(5);
-const three = new Node(2);
-const two = new Node(4);
-const six = new Node(6);
-const ten = new Node(10);
-
-one.next = four;
-four.next = three;
-three.next = two;
-two.next = six;
-six.next = ten;
-
-console.log(maxSum(one));

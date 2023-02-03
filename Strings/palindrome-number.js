@@ -31,4 +31,3 @@ const isPalindrome = (x) => {
   }
   return num === current || Math.floor(num / 10) === current;
 };
-console.log(isPalindrome(88888));
