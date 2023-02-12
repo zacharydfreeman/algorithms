@@ -58,14 +58,3 @@ const closestCarrot = (grid, row, col) => {
 
   return -1;
 };
-
-const grid = [
-  ["O", "O", "O", "O", "O"],
-  ["O", "X", "O", "O", "O"],
-  ["O", "X", "X", "O", "O"],
-  ["O", "X", "C", "O", "O"],
-  ["O", "X", "X", "O", "O"],
-  ["C", "O", "O", "O", "O"],
-];
-
-console.log(closestCarrot(grid, 1, 2));

@@ -24,7 +24,7 @@ Output: 3
 Explanation: The schedule is one job per day. total difficulty will be 3.
  */
 
-// [6,5,4,3,2,1], d = 2
+
 // O(n^2 * d) time | O(n * d) space where n is length of job difficulty array and d is # of days
 const minDifficulty = (jobDifficulty, d) => {
   let ans = _minDifficulty(jobDifficulty, d);
@@ -33,7 +33,7 @@ const minDifficulty = (jobDifficulty, d) => {
 
 const _minDifficulty = (jobDifficulty, d, idx = 0, memo = {}) => {
   // memoize
-  const key = d + "," + idx;
+  const key = d + ',' + idx;
   if (key in memo) return memo[key];
   // if d = 0, return 0
   if (d === 1) return Math.max(...jobDifficulty.slice(idx));
@@ -54,20 +54,3 @@ const _minDifficulty = (jobDifficulty, d, idx = 0, memo = {}) => {
   memo[key] = ans;
   return memo[key];
 };
-
-const job1 = [6, 1, 5, 2, 4, 3],
-  d1 = 2; // 9
-const job2 = [6, 5, 4, 3, 2, 1],
-  d2 = 2; // 7
-const job3 = [1, 1, 1],
-  d3 = 3; // 3
-const job4 = [2, 1, 1],
-  d4 = 4; // -1
-const job5 = [11, 111, 22, 222, 33, 333, 44, 444],
-  d5 = 6; // 843
-
-console.log(minDifficulty(job5, d5));
-console.log(minDifficulty(job1, d1));
-console.log(minDifficulty(job2, d2));
-console.log(minDifficulty(job3, d3));
-console.log(minDifficulty(job4, d4));
