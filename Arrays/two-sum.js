@@ -12,10 +12,6 @@ pairSum([4, 7, 9, 2, 5, 1], 5); // -> [0, 5]
 pairSum([1, 6, 7, 2], 13); // -> [1, 2]
 */
 
-//create function that takes in an arr and num
-//declarre an empty arr
-//use nested for loops to add each num in the arr to one arr element at a time
-// when the curr i sums to the tar with the curr j return the indices of each in an arr
 
 // O(n) time | O(n) space where n is the length of the array
 const pairSum = (array, target) => {

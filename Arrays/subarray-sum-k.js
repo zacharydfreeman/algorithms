@@ -12,6 +12,7 @@ Output: 2
 
 */
 
+// O(n) time | O(n) space
 const subarraySum = (nums, k) => {
   // declare a map to store prefix sums, currentSum variable and total count variable
   const prefixSums = { 0: 1 }; // we have to initialize 0 to 1

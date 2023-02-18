@@ -10,6 +10,7 @@ Input: s = "rat", t = "car"
 Output: false
  */
 
+// O(n + m) time | O(n) space where n is length of s and m is length of t
 const isAnagram = (s, t) => {
   // put char count of s in map
   const sMap = {};

@@ -28,7 +28,6 @@ Output: 1
 */
 
 // Approach: assume at every index that is the building that will form the largest rectangle
-
 // O(n) time | O(1) space
 const maxArea = (heights) => {
   // declare two pointers and maxarea variable

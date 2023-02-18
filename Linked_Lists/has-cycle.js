@@ -11,6 +11,7 @@ class Node {
   }
 }
 
+// O(n) time | O(1) space
 const hasCycle = (head) => {
   // declare fast and slow pointers
   let slow = head;
@@ -18,6 +19,7 @@ const hasCycle = (head) => {
   while (fast !== null && fast.next !== null) {
     slow = slow.next;
     fast = fast.next.next;
+    // if slow === fast there is a cycle, return true
     if (slow === fast) return true;
   }
   return false;

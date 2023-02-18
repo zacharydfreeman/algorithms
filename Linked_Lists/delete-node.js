@@ -19,6 +19,7 @@ The output will be the entire list after calling your function.
 
  */
 
+// O(1) time | O(1) space
 const deleteNode = (node) => {
   // change current node's val to be the val of the next node
   node.val = node.next.val;

@@ -27,5 +27,3 @@ const longestCommonPrefix = (strs) => {
   return output;
 };
 
-const strs = ["flower", "flow", "flight"];
-console.log(longestCommonPrefix([""]));

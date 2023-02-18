@@ -11,9 +11,12 @@ Output: 1
 Explanation: The answer is "b", with the length of 1.
 */
 
-// O(n) time | O(min(n, a)) space where n is length of string and a is number of characters in alphabet
+// O(n) time | O(min(n, a)) space where n is length of string and
+// a is number of characters in alphabet
 const lengthOfLongestSubstring = (s) => {
+  // declare last seen map
   const lastSeen = {};
+  // declare longest and start index variables
   let longest = 0;
   let startIdx = 0;
   for (let i = 0; i < s.length; i++) {
