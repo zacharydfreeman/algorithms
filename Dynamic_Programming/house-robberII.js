@@ -29,10 +29,7 @@ Output: 3
  * @return {number}
  */
 
-// [1, 2, 3, 1]
-// [1, 2, 4, 4,max(4, 1 + ) ] maxSums
-
-// [1, 2, 3, 1]
+// O(n) time | O(n) space
 const rob = (nums) => {
   if (nums.length === 0) return 0;
   if (nums.length === 1) return nums[0];

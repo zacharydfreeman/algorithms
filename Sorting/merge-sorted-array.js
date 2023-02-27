@@ -37,13 +37,13 @@ const merge = (nums1, m, nums2, n) => {
     }
     k--;
   }
-
+  // check to see if there are any numbers left to check in nums1
   while (i >= 0) {
     nums1[k] = nums1[i];
     i--;
     k--;
   }
-
+  // check to see if there are any numbers left to check in nums2
   while (k >= 0) {
     nums1[k] = nums2[j];
     j--;
