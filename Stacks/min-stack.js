@@ -57,11 +57,3 @@ class MinStack {
   }
 }
 
-const myMinStack = new MinStack();
-myMinStack.push(5);
-myMinStack.push(1);
-myMinStack.push(8);
-myMinStack.push(-100);
-myMinStack.pop();
-
-console.log(myMinStack.getMin());
