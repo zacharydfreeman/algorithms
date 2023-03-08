@@ -26,13 +26,13 @@ const findDuplicateSubtrees = (root) => {
 
 const dfs = (root, output, map) => {
   // if root is null serialize
-  if (!root) return 'null';
+  if (!root) return "null";
   // declare s that will the serialization of the preorder
   const s = [
     root.val,
     dfs(root.left, output, map),
     dfs(root.right, output, map),
-  ].join(',');
+  ].join(",");
   // if s not in map initialize to empty array
   if (!(s in map)) map[s] = [];
   // map[s].length is 1, output.push(root). You only want to push once so check if length is 1
