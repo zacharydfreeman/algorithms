@@ -133,9 +133,3 @@ const songTimes5 = [
   ['Celebration Day', '3:30'],
   ['Going to California', '3:30'],
 ];
-
-console.log(findPair(songTimes1));
-console.log(findPair(songTimes2));
-console.log(findPair(songTimes3));
-console.log(findPair(songTimes4));
-console.log(findPair(songTimes5));
