@@ -41,9 +41,3 @@ class Trie {
     return true;
   }
 }
-
-const trie = new Trie();
-trie.insert('apple');
-
-console.log(trie.root);
-console.log(trie.startsWith('appp'));
