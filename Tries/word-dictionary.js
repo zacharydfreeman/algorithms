@@ -46,12 +46,12 @@ class WordDictionary {
   }
 
   search(word, i = 0, current = this.root) {
-    console.log('hey');
     if (word.length === i && this.endSymbol in current) return true;
     const char = word[i];
     if (char !== '.' && !(char in current)) return false;
     if (char === '.') {
       for (let key in current) {
+        if (key === "*") continue;
         if (this.search(word, i + 1, current[key])) return true;
       }
     } else {
@@ -65,4 +65,4 @@ const myWordDictionary = new WordDictionary();
 myWordDictionary.addWord('bad');
 myWordDictionary.addWord('dad');
 myWordDictionary.addWord('mad');
-myWordDictionary.search('bad');
+console.log(myWordDictionary.search('.ad'));
