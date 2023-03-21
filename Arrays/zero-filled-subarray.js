@@ -19,32 +19,22 @@ There is 1 occurrence of [0,0,0] as a subarray.
 There is no occurrence of a subarray with a size more than 3 filled with 0. Therefore, we return 9.
 */
 
-// Approach: Sliding Window
+// O(n) time | O(1) space where n is length of nums array
 const zeroFilledSubarray = (nums) => {
-  let i = 0;
-  let j = 0;
+  // declare count and consecutive zeros variables
   let count = 0;
-  while (j <= nums.length) {
-    if (i === j) {
-      j++;
-    } else if (nums[j] === 0) {
-      j++;
-    } else if (nums[i] === 0) {
-      count += factorial(j - i);
-      i = j;
+  let consecutiveZeros = 0;
+  for (let i = 0; i < nums.length; i++) {
+    // if number is 0
+    if (nums[i] === 0) {
+      // increment consecutive zeros and add to count
+      consecutiveZeros++;
+      count += consecutiveZeros;
     } else {
-      i++;
+      // otherwise set consecutive zeros to 0
+      consecutiveZeros = 0;
     }
   }
+  // return count
   return count;
 };
-
-const factorial = (num) => {
-  let product = 1;
-  for (let i = 1; i <= num; i++) {
-    product *= i;
-  }
-  return product;
-};
-
-console.log(zeroFilledSubarray([1, 3, 0, 0, 2, 0, 0, 4]));
