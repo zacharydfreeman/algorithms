@@ -31,7 +31,3 @@ const minClasses = (levels, spread) => {
   return groups;
 };
 
-const levels = [1, 4, 7, 3, 4];
-const spread = 2;
-
-console.log(minClasses(levels, spread));

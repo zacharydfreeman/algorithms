@@ -21,6 +21,7 @@ Output: 2
 Explanation: The path from city 1 to 4 with the minimum score is: 1 -> 2 -> 1 -> 3 -> 4. The score of this path is min(2,2,4,7) = 2.
 */
 
+// O(n) time | O(n) space
 const minScore = (n, roads) => {
   const graph = createGraph(roads);
   return dfs(1, graph, new Set());
