@@ -10,4 +10,44 @@ Note:
 A path is a sequence of roads between two cities.
 It is allowed for a path to contain the same road multiple times, and you can visit cities 1 and n multiple times along the path.
 The test cases are generated such that there is at least one path between 1 and n.
+
+Input: n = 4, roads = [[1,2,9],[2,3,6],[2,4,5],[1,4,7]]
+Output: 5
+Explanation: The path from city 1 to 4 with the minimum score is: 1 -> 2 -> 4. The score of this path is min(9,5) = 5.
+It can be shown that no other path has less score.
+
+Input: n = 4, roads = [[1,2,2],[1,3,4],[3,4,7]]
+Output: 2
+Explanation: The path from city 1 to 4 with the minimum score is: 1 -> 2 -> 1 -> 3 -> 4. The score of this path is min(2,2,4,7) = 2.
 */
+
+const minScore = (n, roads) => {
+  const graph = createGraph(roads);
+  return dfs(1, graph, new Set());
+};
+
+const dfs = (start, graph, visited) => {
+  if (visited.has(start)) return Infinity;
+  visited.add(start);
+  let min = Infinity;
+  for (let neighborInfo of graph[start]) {
+    const [neighbor, distance] = neighborInfo;
+    const result = dfs(neighbor, graph, visited);
+    min = Math.min(min, distance, result);
+  }
+  return min;
+};
+
+const createGraph = (roads) => {
+  const graph = {};
+
+  for (let road of roads) {
+    const [cityA, cityB, distance] = road;
+    if (!(cityA in graph)) graph[cityA] = [];
+    if (!(cityB in graph)) graph[cityB] = [];
+    graph[cityA].push([cityB, distance]);
+    graph[cityB].push([cityA, distance]);
+  }
+
+  return graph;
+};
