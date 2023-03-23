@@ -22,9 +22,14 @@ const makeConnected = (n, connections) => {
   const graph = createGraph(n, connections);
   // determine how many disconnected components there are
   let disconnectedComponents = 0;
+
   for (let cable in graph) {
     if (graph[cable].length === 0) disconnectedComponents++;
   }
+
+  return connections.length > disconnectedComponents
+    ? disconnectedComponents
+    : -1;
 };
 
 const createGraph = (n, connections) => {
@@ -45,6 +50,5 @@ const n = 6,
     [0, 2],
     [0, 3],
     [1, 2],
-    [1, 3],
   ];
 console.log(makeConnected(n, connections));
