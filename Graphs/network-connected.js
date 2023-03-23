@@ -27,9 +27,28 @@ const makeConnected = (n, connections) => {
     if (graph[cable].length === 0) disconnectedComponents++;
   }
 
-  return connections.length > disconnectedComponents
-    ? disconnectedComponents
-    : -1;
+  // determine how many extra edges there are
+  const visited = new Set();
+  let extraEdges = 0;
+  for (let i = 0; i < n; i++) {
+    extraEdges += dfs(i, null, graph, visited);
+  }
+  console.log(extraEdges);
+
+  return extraEdges > disconnectedComponents ? disconnectedComponents : -1;
+};
+
+const dfs = (current, parent, graph, visited) => {
+  if (visited.has(current)) return 0;
+  visited.add(current);
+
+  for (let neighbor of graph[current]) {
+    if (neighbor === parent) continue;
+    if (visited.has(neighbor)) return 1;
+    dfs(neighbor, current, graph, visited);
+  }
+
+  return 0;
 };
 
 const createGraph = (n, connections) => {
@@ -48,7 +67,6 @@ const n = 6,
   connections = [
     [0, 1],
     [0, 2],
-    [0, 3],
     [1, 2],
   ];
 console.log(makeConnected(n, connections));
