@@ -12,4 +12,42 @@ Input: edges = [[1,2],[2,3],[3,4],[1,4],[1,5]]
 Output: [1,4]
 */
 
-const findRedundantConnection = (edges) => {};
+// O(n) time | O(n) space
+const findRedundantConnection = (edges) => {
+  // declare parents array
+  const parents = new Array(edges.length + 1).fill().map((_, idx) => idx);
+
+  // declare ranks array
+  const ranks = new Array(edges.length + 1).fill(1);
+
+  for (let [edgeOne, edgeTwo] of edges) {
+    if (!union(edgeOne, edgeTwo, parents, ranks)) return [edgeOne, edgeTwo];
+  }
+};
+
+const find = (edge, parents) => {
+  let parent = parents[edge];
+  while (parent !== parents[parent]) {
+    // path compression
+    parents[parent] = parents[parents[parent]];
+    parent = parents[parent];
+  }
+  return parent;
+};
+
+const union = (edgeOne, edgeTwo, parents, ranks) => {
+  const parentOne = find(edgeOne, parents);
+  const parentTwo = find(edgeTwo, parents);
+  // return false if they have same parent
+  if (parentOne === parentTwo) return false;
+  // union by rank
+  if (parentOne > parentTwo) {
+    parents[parentTwo] = parentOne;
+    ranks[parentOne] += ranks[parentTwo];
+  } else {
+    parents[parentOne] = parentTwo;
+    ranks[parentTwo] += ranks[parentOne];
+  }
+
+  return true;
+};
