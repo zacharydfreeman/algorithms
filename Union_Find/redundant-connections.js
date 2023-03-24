@@ -13,7 +13,6 @@ Output: [1,4]
 */
 
 // O(n) time | O(n) space
-
 const findRedundantConnection = (edges) => {
   // declare parents array
   const parents = new Array(edges.length + 1).fill().map((_, idx) => idx);
