@@ -12,13 +12,13 @@ uncompress("2p1o5p"); // -> 'ppoppppp'
 
 */
 
-// Approach: two pointers
+// Approach: Two Pointers
 // O(n*m) time | O(n*m) space where n is number of groups and m is max number of groups
 const uncompress = (s) => {
   // declare a numbers string that we will use to see if current char of string is a character
-  const numbers = "0123456789";
+  const numbers = '0123456789';
   // declare two pointers and result string
-  let output = "";
+  let output = '';
   let i = 0; // points to beginning of number
   let j = 0; // points to a character
 
