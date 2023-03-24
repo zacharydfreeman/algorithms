@@ -22,4 +22,6 @@ Output: 0
 
 */
 
-const minReorder = (n, connections) => {};
+const minReorder = (n, connections) => {
+  // test
+};
