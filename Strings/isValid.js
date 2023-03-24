@@ -21,7 +21,7 @@ Output: false
 // O(n) time | O(n) space
 const isValid = function (s) {
   // declare map of characters and stack
-  const map = { "{": "}", "(": ")", "[": "]" };
+  const map = { '{': '}', '(': ')', '[': ']' };
   const stack = [];
   // iterate through string
   for (let i = 0; i < s.length; i++) {
@@ -40,5 +40,5 @@ const isValid = function (s) {
   // return true if and only if the stack is empty
   return stack.length === 0;
 };
-let s = "(]";
+let s = '(]';
 console.log(isValid(s));
