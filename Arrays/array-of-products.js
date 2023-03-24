@@ -7,6 +7,25 @@ output = [8, 40, 10, 20]
 
 // O(n) time | O(n) space
 const arrayOfProducts = (array) => {
+  // declare products array and fill with 1
+  const products = new Array(array.length).fill(1);
+  // calculate left running product
+  let leftRunningProduct = 1;
+  for (let i = 0; i < array.length; i++) {
+    products[i] *= leftRunningProduct;
+    leftRunningProduct *= array[i];
+  }
+  // calculate right running product
+  let rightRunningProduct = 1;
+  for (let i = array.length - 1; i >= 0; i--) {
+    products[i] *= rightRunningProduct;
+    rightRunningProduct *= array[i];
+  }
+  return products;
+};
+
+// O(n) time | O(n) space
+const arrayOfProducts2 = (array) => {
   const leftProducts = new Array(array.length).fill(1);
   const rightProducts = new Array(array.length).fill(1);
   for (let i = 1; i < leftProducts.length; i++) {
