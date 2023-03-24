@@ -18,7 +18,7 @@ It can be shown that no other path has less score.
 
 Input: n = 4, roads = [[1,2,2],[1,3,4],[3,4,7]]
 Output: 2
-Explanation: The path from city 1 to 4 with the minimum score is: 1 -> 2 -> 1 -> 3 -> 4. The score of this path is min(2,2,4,7) = 2.
+Explanation: The path from city 1 to 4 with the minimum score is: 1 -> 2 -> 1 -> 3 -> 4. The score of this path is min(2,2,4,7) = 2
 */
 
 // O(v + e) time | O(v) space where v is the number of vertices and e is the number of edges
