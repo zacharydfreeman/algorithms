@@ -22,6 +22,35 @@ Output: 0
 
 */
 
+// O(n) time | O(n) space
 const minReorder = (n, connections) => {
-  // convert to a data structure
+  // get neighbors
+  const neighbors = {};
+  const connectionsSet = new Set();
+  // populate neighbors and connection set
+  for (let [a, b] of connections) {
+    if (!(a in neighbors)) neighbors[a] = [];
+    if (!(b in neighbors)) neighbors[b] = [];
+    neighbors[a].push(b);
+    neighbors[b].push(a);
+    connectionsSet.add([a, b].join());
+  }
+  const visited = new Set();
+  let changes = 0;
+
+  const dfs = (city) => {
+    for (let neighbor of neighbors[city]) {
+      if (visited.has(neighbor)) continue;
+      // check if neighbor can reach city
+      const key = city + ',' + neighbor;
+      if (connectionsSet.has(key)) changes++;
+      visited.add(neighbor);
+      dfs(neighbor);
+    }
+  };
+  // add 0 to visited
+  visited.add(0);
+  // dfs starting at 0
+  dfs(0);
+  return changes;
 };
