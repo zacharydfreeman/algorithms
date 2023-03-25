@@ -14,4 +14,6 @@ Explanation: There are 14 pairs of nodes that are unreachable from each other:
 Therefore, we return 14
 */
 
-const countPairs = (n, edges) => {};
+const countPairs = (n, edges) => {
+    // get number of connected components and size
+};
