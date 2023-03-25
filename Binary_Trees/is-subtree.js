@@ -5,7 +5,6 @@ of root with the same structure and node values of subRoot and false otherwise.
 
 A subtree of a binary tree tree is a tree that consists of a node in tree and all of this
 node's descendants. The tree tree could also be considered as a subtree of itself.
-
 */
 
 // Approach: Recursively
