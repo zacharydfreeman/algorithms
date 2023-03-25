@@ -14,6 +14,52 @@ Explanation: There are 14 pairs of nodes that are unreachable from each other:
 Therefore, we return 14
 */
 
+// O(n) time | O(n) space
 const countPairs = (n, edges) => {
-    // get number of connected components and size
+  // create graph
+  const graph = createGraph(n, edges);
+  // declare sizes array and visited set
+  const sizes = [];
+  const visited = new Set();
+  // loop through graph and get the size of each connected component
+  for (let node in graph) {
+    const size = dfs(node, graph, visited);
+    if (size > 0) sizes.push(size);
+  }
+  // declare pairs and sum variables
+  let pairs = 0;
+  let sum = sizes[0];
+  for (let i = 1; i < sizes.length; i++) {
+    // add current sum * current size
+    pairs += sum * sizes[i];
+    // add the current size to current sum
+    sum += sizes[i];
+  }
+  return pairs;
+};
+
+const dfs = (current, graph, visited) => {
+  if (visited.has(String(current))) return 0;
+  visited.add(String(current));
+  // declare size variable and set equal to 1
+  let size = 1;
+  // explore neighbors and add to size
+  for (let neighbor of graph[current]) {
+    size += dfs(neighbor, graph, visited);
+  }
+
+  return size;
+};
+
+const createGraph = (n, edges) => {
+  const graph = {};
+  for (let i = 0; i < n; i++) {
+    graph[i] = [];
+  }
+  for (let edge of edges) {
+    const [a, b] = edge;
+    graph[a].push(b);
+    graph[b].push(a);
+  }
+  return graph;
 };
