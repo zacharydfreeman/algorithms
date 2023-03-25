@@ -13,6 +13,7 @@ Repeat the entire process starting from step 1.
 Return the triangular sum of nums.
  */
 
+// O(n) time | O(n) space
 const triangularSum = (nums) => {
   // declare length variable
   let count = nums.length;
