@@ -18,4 +18,36 @@ Explanation: There are no cycles in this graph.
 
 */
 
-const longestCycle = (edges) => {};
+// O(n) time | O(n) space
+const longestCycle = (edges) => {
+  // declare visited array and longest variable
+  const visited = new Array(edges.length).fill(false);
+  let longest = -1;
+
+  const visit = (current) => {
+    // declare distances object and distance variable to keep track of distances
+    const distances = {};
+    let distance = 0;
+    // iterate while you dont have a cycle
+    while (!visited[current]) {
+      // mark as visited and set distance to current distance
+      visited[current] = true;
+      distances[current] = distance;
+      distance++;
+      // move on to next node if not -1
+      if (edges[current] !== -1) {
+        current = edges[current];
+        if (current in distances) {
+          // we have found a cycle
+          longest = Math.max(longest, distance - distances[current]);
+        }
+      }
+    }
+  };
+  // visit each node that hasnt been visited and has outbound edges
+  for (let i = 0; i < edges.length; i++) {
+    if (!visited[i] && edges[i] !== -1) visit(i);
+  }
+  // return longest
+  return longest;
+};
