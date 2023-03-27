@@ -14,7 +14,21 @@
  * Hint: Think about the length of the string and how that relates to the frequencies of the characters
  */
 
-const permPalin = (str) => {};
+// Approach: Make a char count hash map and determine how many odd counts there are
+// O(n) time | O(n) space
+const permPalin = (str) => {
+  if (typeof str !== 'string') return false;
+  const counts = {};
+  for (let char of str) {
+    counts[char] = counts[char] + 1 || 1;
+  }
+  let odd = 0;
+  for (let char in counts) {
+    if (counts[char] % 2) odd++;
+  }
+
+  return odd <= 1;
+};
 
 /*
  * Extension: Solve in constant space complexity.
