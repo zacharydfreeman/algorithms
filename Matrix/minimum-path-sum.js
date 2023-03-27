@@ -12,9 +12,13 @@ Output: 12
 
 */
 
+// Approach: Dynamic Programming with constant space
+// O(n * m) time | O(1) space
+const minPathSum = (grid) => {};
+
 // Approach: 2-D Dynamic Programming
 // O(n * m) time | O(n * m) space
-const minPathSum = (grid, row = 0, col = 0, memo = {}) => {
+const minPathSum2 = (grid, row = 0, col = 0, memo = {}) => {
   const pos = row + ',' + col;
   if (pos in memo) return memo[pos];
   if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length)
