@@ -8,8 +8,7 @@ const sortedArrayToBST = (nums, i = 0, j = nums.length - 1) => {
   if (i > j) return null;
   // get middle index and middle value that will become root node
   const midIdx = Math.floor((i + j) / 2);
-  const rootVal = nums[midIdx];
-  const rootNode = new TreeNode(rootVal);
+  const rootNode = new TreeNode(nums[midIdx]);
   // set rootNode.left to be result of recursively calling function with updated indexes
   rootNode.left = sortedArrayToBST(nums, i, midIdx - 1);
   // set rootNode.right to be result of recursively calling function with updated indexes
