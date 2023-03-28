@@ -10,9 +10,26 @@ output => false
 
 */
 
+// Approach: DFS. Marking value as negative when visited
+// O(n) time | O(1) space. The stack will never be more than 2 elements, so it is constant space
+const findZero = (array, idx) => {
+  const stack = [idx];
+  while (stack.length) {
+    const current = stack.pop();
+    if (array[current] === 0) return true;
+    const neighborOne = current + array[current];
+    const neighborTwo = current - array[current];
+    array[current] *= -1;
+    if (neighborOne < array.length && array[neighborOne] >= 0)
+      stack.push(neighborOne);
+    if (neighborTwo >= 0 && array[neighborTwo] >= 0) stack.push(neighborTwo);
+  }
+  return false;
+};
+
 // Approach: DFS
 // O(n) time | O(n) space
-const findZero = (array, idx) => {
+const findZero2 = (array, idx) => {
   const visited = new Set();
   const stack = [idx];
   while (stack.length) {
