@@ -32,8 +32,8 @@ const removeDuplicates = (nums) => {
   let i = 0;
   let j = 1;
   while (j < nums.length) {
-    // is nums[i] >= nums[j], we need to move the j pointer to the right
-    if (nums[i] >= nums[j]) {
+    // is nums[i] === nums[j], we need to move the j pointer to the right
+    if (nums[i] === nums[j]) {
       j++;
     } else {
       // swap elements at i + 1 index and j
