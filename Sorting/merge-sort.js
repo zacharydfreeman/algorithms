@@ -1,7 +1,6 @@
 /*
 Write a function that take in an array of integers and return a sorted version of that array
 Use the merge sort algorithm to sort the array
-
 */
 
 // O(nlog(n)) time | O(n) space
