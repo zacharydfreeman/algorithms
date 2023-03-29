@@ -19,4 +19,26 @@ It does not matter what you leave beyond the returned k (hence they are undersco
 
 */
 
-const removeElement = (nums, val) => {};
+// Approach: Two pointers
+// O(n) time | O(1) space
+const removeElement = (nums, val) => {
+  let i = 0;
+  let j = nums.length - 1;
+  let count = 0;
+  while (i <= j) {
+    if (nums[i] !== val) {
+      i++;
+      // increase count by 1
+      count++;
+    } else if (nums[j] === val) {
+      j--;
+    } else {
+      [nums[i], nums[j]] = [nums[j], nums[i]];
+      // increase count by 1
+      count++;
+      i++;
+      j--;
+    }
+  }
+  return count;
+};
