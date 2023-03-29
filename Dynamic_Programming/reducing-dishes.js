@@ -22,4 +22,22 @@ Explanation: People do not like the dishes. No dish is prepared.
  * 
  */
 
-const maxSatisfaction = (satisfaction) => {};
+// Approach: Sort
+// O(log(n)) time | O(1) space
+const maxSatisfaction = (satisfaction) => {
+  // sort is descending order
+  satisfaction.sort((a, b) => b - a);
+  // declare max and sum variables
+  let max = 0;
+  let sum = 0;
+  for (let score of satisfaction) {
+    // add score to sum
+    sum += score;
+    // sum is less than 0, it will decrease max so break
+    if (sum < 0) break;
+    // add current sum to max
+    max += sum;
+  }
+  // return max
+  return max;
+};
