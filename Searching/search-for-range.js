@@ -43,7 +43,6 @@ const specialBinarySearch = (array, target, goLeft) => {
       right = mid - 1;
     }
   }
-
   return idx;
 };
 
