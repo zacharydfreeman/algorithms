@@ -20,6 +20,17 @@ Explanation: The array ans is formed as follows:
 
 // O(n) time | O(n) space
 const getConcatenation = (nums) => {
+  const output = [];
+  for (let i = 0; i < 2; i++) {
+    for (let num of nums) {
+      output.push(num);
+    }
+  }
+  return output;
+};
+
+// O(n) time | O(n) space
+const getConcatenation2 = (nums) => {
   // declare idx and length variable
   let i = 0;
   const length = nums.length;
