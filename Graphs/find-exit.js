@@ -9,7 +9,7 @@ Here is an example board:
 
     col-->        0  1  2  3  4  5  6  7  8
                +---------------------------
-    row      0 |  +  +  +  +  +  +  +  0  0
+    row      0 |  +  +  0  +  +  +  +  0  0
      |       1 |  +  +  0  0  0  0  0  +  +
      |       2 |  0  0  0  0  0  +  +  0  +
      v       3 |  +  +  0  +  +  +  +  0  0
@@ -138,7 +138,7 @@ const findExit = (board, start) => {
       visited.add(pos);
       queue.push([newRow, newCol]);
     }
-
+    // change first pass to false
     firstPass = false;
   }
   return null;
