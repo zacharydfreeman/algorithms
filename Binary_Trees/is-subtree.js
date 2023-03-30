@@ -21,7 +21,7 @@ const isSubtree = (root, subRoot) => {
 };
 
 // Approach: Iteratively
-// O(n*m) time | O(max(n, m)) where n and m are the sizes of the trees
+// O(n*m) time | O(kmax(n, m)) where n and m are the sizes of the trees
 const isSubtree2 = (root, subRoot) => {
   // dfs
   const stack = [root];
