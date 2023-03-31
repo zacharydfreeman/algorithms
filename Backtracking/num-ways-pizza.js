@@ -16,4 +16,10 @@ Input: pizza = ["A..","A..","..."], k = 1
 Output: 1
  */
 
-const ways = (pizza, k) => {};
+const ways = (pizza, k) => {
+  // you need to do a cut
+  // and then check if valid?
+  // only do valid cuts
+  // vertical cuts
+  // horizontal cuts
+};
