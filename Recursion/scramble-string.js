@@ -27,4 +27,6 @@ Input: s1 = "a", s2 = "a"
 Output: true
 */
 
-const isScramble = (s1, s2) => {};
+const isScramble = (s1, s2) => {
+    
+};
