@@ -27,6 +27,26 @@ Input: s1 = "a", s2 = "a"
 Output: true
 */
 
-const isScramble = (s1, s2) => {
-    
+// O(n^4) time | O(n^3) space where n is length of string
+const isScramble = (s1, s2, memo = {}) => {
+  const key = s1 + s2;
+  if (key in memo) return memo[key];
+  if (s1 === s2) return true;
+  if (s1.length !== s2.length) return false;
+  if (s1.length <= 1) return s1 === s2;
+  // divide
+  for (let i = 1; i < s1.length; i++) {
+    if (
+      (isScramble(s1.slice(0, i), s2.slice(0, i), memo) &&
+        isScramble(s1.slice(i), s2.slice(i), memo)) ||
+      (isScramble(s1.slice(0, i), s2.slice(s1.length - i), memo) &&
+        isScramble(s1.slice(i), s2.slice(0, s1.length - i), memo))
+    ) {
+      memo[key] = true;
+      return memo[key];
+    }
+  }
+
+  memo[key] = false;
+  return memo[key];
 };
