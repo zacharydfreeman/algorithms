@@ -44,13 +44,3 @@ class Solution {
     return this.array;
   }
 }
-
-const numbers = new Solution([1, 2, 3, 4]);
-console.log(numbers.shuffle());
-console.log(numbers.shuffle());
-console.log(numbers.shuffle());
-console.log(numbers.reset());
-console.log(numbers.shuffle());
-console.log(numbers.reset());
-console.log(numbers.shuffle());
-console.log(numbers.reset());
