@@ -19,31 +19,32 @@ Output: -1
 */
 
 // O(log(n)) time | O(1) space
-const search = (array, target) => {
+const search = (nums, target) => {
   let low = 0;
-  let high = array.length - 1;
+  let high = nums.length - 1;
 
   while (low <= high) {
-    const mid = Math.floor((low + high) / 2);
-    const midNum = array[mid];
-    const rightNum = array[high];
-    const leftNum = array[low];
+    const midIdx = Math.floor((low + high) / 2);
+    const midNum = nums[midIdx];
+    const lowNum = nums[low];
+    const highNum = nums[high];
 
-    if (midNum === target) return mid;
+    if (midNum === target) return midIdx;
 
-    if (leftNum <= midNum) {
-      if (target < midNum && target >= leftNum) {
-        high = mid - 1;
+    if (midNum >= lowNum) {
+      if (target < midNum && target >= lowNum) {
+        high = midIdx - 1;
       } else {
-        low = mid + 1;
+        low = midIdx + 1;
       }
     } else {
-      if (target > midNum && target <= rightNum) {
-        low = mid + 1;
+      if (target > midNum && target <= highNum) {
+        low = midIdx + 1;
       } else {
-        high = mid - 1;
+        high = midIdx - 1;
       }
     }
   }
+
   return -1;
 };
