@@ -24,7 +24,35 @@ Thus, [2,0,2] is returned.
 */
 
 // Approach: Sort and Binary Search
-const successfulPairs = (spells, potions, success) => {};
+// O((n + m)log(m)) time | O(1) space
+const successfulPairs = (spells, potions, success) => {
+  // sort potions
+  potions.sort((a, b) => a - b);
+  const pairs = [];
+  for (let spell of spells) {
+    let l = 0;
+    let r = potions.length - 1;
+    let idx = -1;
+    while (l <= r) {
+      const midIdx = Math.floor((l + r) / 2);
+      const sum = spell * potions[midIdx];
+      if (sum >= success) {
+        // you still have to go left
+        idx = midIdx;
+        r = midIdx - 1;
+      } else {
+        l = midIdx + 1;
+      }
+    }
+    // if idx is not -1 add potions.length - idx to array
+    if (idx !== -1) {
+      pairs.push(potions.length - idx);
+    } else {
+      pairs.push(0);
+    }
+  }
+  return pairs;
+};
 
 // Approach: Brute Force
 // O(n^2) time | O(1) space
@@ -39,9 +67,3 @@ const successfulPairs2 = (spells, potions, success) => {
   }
   return pairs;
 };
-
-const spells = [3, 1, 2],
-  potions = [8, 5, 8],
-  success = 16;
-
-console.log(successfulPairs(spells, potions, success));
