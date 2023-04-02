@@ -23,4 +23,25 @@ Thus, [2,0,2] is returned.
 
 */
 
+// Approach: Sort and Binary Search
 const successfulPairs = (spells, potions, success) => {};
+
+// Approach: Brute Force
+// O(n^2) time | O(1) space
+const successfulPairs2 = (spells, potions, success) => {
+  const pairs = [];
+  for (spell of spells) {
+    let count = 0;
+    for (let potion of potions) {
+      if (spell * potion >= success) count++;
+    }
+    pairs.push(count);
+  }
+  return pairs;
+};
+
+const spells = [3, 1, 2],
+  potions = [8, 5, 8],
+  success = 16;
+
+console.log(successfulPairs(spells, potions, success));
