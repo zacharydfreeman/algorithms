@@ -93,5 +93,3 @@ class MaxHeap {
     return this.heap[0];
   }
 }
-
-module.exports = { MaxHeap };
