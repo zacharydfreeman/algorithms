@@ -93,5 +93,3 @@ class MinHeap {
     return this.heap[0];
   }
 }
-
-module.exports = { MinHeap };
