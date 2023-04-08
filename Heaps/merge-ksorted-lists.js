@@ -13,7 +13,7 @@ class ListNode {
 }
 
 // Approach: Min Heap
-// Time & Space Complexity: O(nlog(k)) time | O(k) space
+// O(nlog(k)) time | O(k) space
 const mergeKLists = (lists) => {
   // put head nodes in each list into an array
   const array = [];
