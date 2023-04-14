@@ -11,4 +11,19 @@ You must decrease the overall operation steps as much as possible.
 
  */
 
-const findMin = (nums) => {};
+// O(log(n)) time | O(1) space
+const findMin = (nums) => {
+  let low = 0;
+  let high = nums.length - 1;
+  while (low < high) {
+    const mid = Math.floor((low + high) / 2);
+    if (nums[mid] > nums[high]) {
+      low = mid + 1;
+    } else if (nums[mid] < nums[high]) {
+      high = mid;
+    } else {
+      high--;
+    }
+  }
+  return nums[low];
+};
