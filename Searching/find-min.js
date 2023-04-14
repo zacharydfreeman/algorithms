@@ -18,7 +18,7 @@ const findMin = (nums) => {
   let low = 0;
   let high = nums.length - 1;
   while (low < high) {
-    let mid = Math.floor(low + (high - low) / 2);
+    let mid = Math.floor((low + high) / 2);
     // Found the pivot point where the rotation began
     if (nums[mid] > nums[high]) {
       low = mid + 1;
