@@ -17,4 +17,21 @@ Explanation:
 The maximum total can be obtained if we choose all coins from the last pile.
  */
 
-const maxValueOfCoins = (piles, k) => {};
+// O(k * s) time | O(n * k) where s is the total number of elements, k is number of coins and n is number of piles
+const maxValueOfCoins = (piles, k, i = 0, memo = {}) => {
+  if (i === piles.length) return 0;
+  const key = k + ',' + i;
+  if (key in memo) return memo[key];
+  // skip current pile
+  let result = maxValueOfCoins(piles, k, i + 1, memo);
+  let sum = 0;
+  for (let j = 0; j < Math.min(k, piles[i].length); j++) {
+    sum += piles[i][j];
+    result = Math.max(
+      result,
+      sum + maxValueOfCoins(piles, k - j - 1, i + 1, memo)
+    );
+  }
+  memo[key] = result;
+  return memo[key];
+};
