@@ -20,7 +20,7 @@ Explanation: Since the tree is empty, there are no root-to-leaf paths.
  */
 
 // Approach: DFS
-// Time: O(n) time | O(h) space where n is number of nodes and h is height of the tree
+// O(n) time | O(h) space where n is number of nodes and h is height of the tree
 const hasPathSum = (root, targetSum) => {
   if (!root) return false;
   if (!root.left && !root.right) return targetSum - root.val === 0;
