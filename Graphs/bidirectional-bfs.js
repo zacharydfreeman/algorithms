@@ -1,5 +1,4 @@
 /* Implement a bidirectional BFS */
-
 const bidirectionalBFS = (startNode, endNode) => {
   // Initialize the start and end nodes and their queues
   let queueStart = [startNode];
