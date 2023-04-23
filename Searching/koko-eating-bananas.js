@@ -18,7 +18,7 @@ Output: 23
 */
 
 // Approach: Binary search
-// O(n * log(m)) time | O(1) space
+// O(n * log(m)) time | O(1) space where n is length of piles and m is max of piles
 const minEatingSpeed = (piles, h) => {
   let l = 1;
   let r = Math.max(...piles);
