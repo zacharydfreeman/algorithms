@@ -9,6 +9,27 @@ Output: 3
 
 */
 
+// Approach: Iteratively DFS
+// O(n) time | O(h) space
+const kthSmallest = (root, k) => {
+  // declare num variable
+  let n = 0;
+  const stack = [];
+  let current = root;
+  while (current || stack.length) {
+    // go left
+    while (current) {
+      stack.push(current);
+      current = current.left;
+    }
+    // have reached a null node, so its time to pop from stack
+    current = stack.pop();
+    n++;
+    if (n === k) return current.val;
+    current = current.right;
+  }
+};
+
 class TreeInfo {
   constructor(numOfNodesGreater, latestNode) {
     this.numOfNodesVisited = 0;
@@ -17,7 +38,7 @@ class TreeInfo {
 }
 
 // O(n) time | O(h) space
-const kthSmallest = (root, k) => {
+const kthSmallest2 = (root, k) => {
   const treeInfo = new TreeInfo(0, -1);
   dfs(root, k, treeInfo);
   return treeInfo.latestNodeValue;
@@ -36,7 +57,7 @@ const dfs = (root, k, treeInfo) => {
 };
 
 // O(n) time | O(n) space
-const kthSmallest2 = (root, k) => {
+const kthSmallest3 = (root, k) => {
   const values = [];
   inOrderTraversal(root, values);
   return values[k - 1];
