@@ -16,8 +16,37 @@ Explanation:
 7 is a candidate, and 7 = 7.
 These are the only two combinations.
 */
+
+// Approach: Backtracking, closure
 // O(2^n) time | O(2^n) space
-const combinationSum = (candidates, target, idx = 0) => {
+const combinationSum = (candidates, target) => {
+  // declare result variable and current array
+  const res = [];
+  const cur = [];
+  // create backtracking dfs function
+  const dfs = (idx, cur, total) => {
+    // base case
+    if (total === target) {
+      res.push([...cur]);
+      return;
+    }
+    // base case if not valid
+    if (idx === candidates.length || total > target) return;
+    // take
+    cur.push(candidates[idx]);
+    dfs(idx, cur, total + candidates[idx]);
+    // dont take
+    cur.pop();
+    dfs(idx + 1, cur, total);
+  };
+  // call helper function
+  dfs(0, cur, 0);
+  return res;
+};
+
+// Approach: Backtracking
+// O(2^n) time | O(2^n) space
+const combinationSum2 = (candidates, target, idx = 0) => {
   // base cases => if target === 0 return empty 2d array
   if (target === 0) return [[]];
   // base case if no more candidate or target < 0 return an empty array
@@ -47,4 +76,3 @@ const combinationSum = (candidates, target, idx = 0) => {
 
   return output;
 };
-
