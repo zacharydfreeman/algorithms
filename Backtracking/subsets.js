@@ -47,3 +47,29 @@ const subsets2 = (nums) => {
   // return output
   return output;
 };
+
+// Approach: Backtracking
+// O(n * 2^n) time | O(n * 2^n) space
+const subsets3 = (nums) => {
+  // declare res array
+  const output = [];
+  // declare subset array that will act as the current subset
+  const subset = [];
+  const dfs = (i) => {
+    if (i === nums.length) {
+      // push a copy of subset into output
+      output.push([...subset]);
+      return;
+    }
+    // take the first element
+    subset.push(nums[i]);
+    dfs(i + 1);
+    // dont take the first element
+    subset.pop();
+    dfs(i + 1);
+  };
+  // call dfs with index 0
+  dfs(0);
+  // return output
+  return output;
+};
