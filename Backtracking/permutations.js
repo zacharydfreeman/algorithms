@@ -19,3 +19,20 @@ const permute = (nums, idx = 0) => {
   }
   return output;
 };
+
+const permute2 = (nums) => {
+  const output = [];
+  const dfs = (idx) => {
+    if (nums.length === idx) output.push([...nums]);
+    for (let i = idx; i < nums.length; i++) {
+      // swap
+      [nums[idx], nums[i]] = [nums[i], nums[idx]];
+      // recursively call dfs with next idx
+      dfs(idx + 1);
+      // swap back (backtrack);
+      [nums[idx], nums[i]] = [nums[i], nums[idx]];
+    }
+  };
+  dfs(0);
+  return output;
+};
