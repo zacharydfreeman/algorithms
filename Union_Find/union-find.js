@@ -2,6 +2,7 @@
  * Implement an Union Find (disjoint set) class
  */
 
+// O(n) time | O(n) space
 class UnionFind {
   constructor(n) {
     // parents array that will keep track of parents
