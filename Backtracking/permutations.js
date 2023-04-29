@@ -20,6 +20,7 @@ const permute = (nums, idx = 0) => {
   return output;
 };
 
+// O(n! * n) time | O(n!) space
 const permute2 = (nums) => {
   const output = [];
   const dfs = (idx) => {
