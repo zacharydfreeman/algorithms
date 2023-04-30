@@ -42,6 +42,8 @@ class UnionFind {
     } else {
       // they are equal, so arbitrarily set one parent to the other
       this.parents[parent2] = parent1;
+      // update rank
+      this.ranks[parent1] += 1;
     }
     // return true to denote a successful union
     return true;
