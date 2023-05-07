@@ -7,9 +7,44 @@ Output: 4
 Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.
  */
 
+// Approach: Intelligent sequence building with binary search
+// O(nlog(n)) time | O(n) space
+const lengthOfLIS = (nums) => {
+  const seq = [nums[0]];
+  for (let i = 1; i < nums.length; i++) {
+    const index = specialBinarySearch(seq, nums[i]);
+    if (nums[i] > seq[seq.length - 1]) {
+      seq.push(nums[i]);
+    } else {
+      seq[index] = nums[i];
+    }
+  }
+  return seq.length;
+};
+
+const specialBinarySearch = (seq, num) => {
+  let l = 0;
+  let r = seq.length - 1;
+  let index = -1;
+  while (l <= r) {
+    const mid = Math.floor((l + r) / 2);
+    if (seq[mid] === num) {
+      index = mid;
+      break;
+    }
+    if (seq[mid] < num) {
+      l = mid + 1;
+    } else {
+      index = mid;
+      r = mid - 1;
+    }
+  }
+  return index;
+};
+
 // Approach: Dynamic programming
 // O(n^2) time | O(n) space
-const lengthOfLIS = (nums) => {
+const lengthOfLIS2 = (nums) => {
   // declare a DP array that will be the length of LIS at that index using that number
   const longest = new Array(nums.length).fill(1); // fill with 1 to start
   // declare a max index variable to track the longest subsequence
@@ -28,9 +63,9 @@ const lengthOfLIS = (nums) => {
 
 // Approach: Recursive
 // O(n^2) time | O(n^2) space
-const lengthOfLIS2 = (nums, idx = 0, priorNum = -Infinity, memo = {}) => {
+const lengthOfLIS3 = (nums, idx = 0, priorNum = -Infinity, memo = {}) => {
   // memoization
-  const key = idx + "," + priorNum;
+  const key = idx + ',' + priorNum;
   if (key in memo) return memo[key];
   // base case if idx is length of nums return 0
   if (idx === nums.length) return 0;
