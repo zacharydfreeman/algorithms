@@ -27,23 +27,19 @@ class UnionFind {
     // find both parents
     const parent1 = this.find(n1);
     const parent2 = this.find(n2);
-    // if parents are equal return false, because a union cant happen. They are already unioned
+    // if parents are equal return false, because a union cant happen. They are already unioned.
     if (parent1 === parent2) return false;
     // union by rank
     const rank1 = this.ranks[parent1];
     const rank2 = this.ranks[parent2];
-
     if (rank1 > rank2) {
-      // update parent of n2
+      // update parent of n2 and ranks of parent1
       this.parents[parent2] = parent1;
-    } else if (rank1 < rank2) {
-      // update parent of n1
-      this.parents[parent1] = parent2;
+      this.ranks[parent1] += this.ranks[parent2];
     } else {
-      // they are equal, so arbitrarily set one parent to the other
-      this.parents[parent2] = parent1;
-      // update rank
-      this.ranks[parent1] += 1;
+      // update parent of n1 and ranks of parent2
+      this.parents[parent1] = parent2;
+      this.ranks[parent2] += this.ranks[parent1];
     }
     // return true to denote a successful union
     return true;
