@@ -44,6 +44,3 @@ const longestMountain = (arr) => {
   }
   return max;
 };
-
-const arr = [2, 2, 2];
-console.log(longestMountain(arr));
