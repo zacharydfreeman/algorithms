@@ -26,15 +26,12 @@ const minCostConnectPoints = (points) => {
     }
   }
   edges.sort((a, b) => a[2] - b[2]);
-  console.log(edges);
   const uf = new UnionFind(points.length);
 
   let minCost = 0;
   for (let i = 0; i < edges.length; i++) {
     const [n1, n2, cost] = edges[i];
-    console.log(uf.parents);
     if (uf.union(n1, n2)) {
-      console.log(n1, n2);
       minCost += cost;
     }
   }
@@ -76,11 +73,3 @@ class UnionFind {
     return true;
   }
 }
-
-const points = [
-  [2, -3],
-  [-17, -8],
-  [13, 8],
-  [-17, -15],
-];
-console.log(minCostConnectPoints(points));
