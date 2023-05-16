@@ -45,7 +45,7 @@ const nodeSwap = (head) => {
 };
 
 // Approach: Recursive
-// O(n) time | O(1) space
+// O(n) time | O(n) space
 const nodeSwap2 = (head) => {
   // base case if either head or head.next is null return the head
   if (head === null || head.next === null) return head;
