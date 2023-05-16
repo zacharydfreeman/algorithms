@@ -8,6 +8,8 @@ Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "
 Output: true
  */
 
+// Approach: Backtracking
+// O(n * m * 3 ^(m * n)) time | O(w) where n is number of rows, m is num of columns, and w is length of word
 const exist = (board, word) => {
   for (let row = 0; row < board.length; row++) {
     for (let col = 0; col < board[0].length; col++) {
