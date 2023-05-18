@@ -33,7 +33,7 @@ const isPalindrome = (head) => {
   // traverse at each pointer and check if values are equal
   let current1 = head;
   let current2 = prev;
-  while (current1 && current2) {
+  while (current2) {
     if (current1.val !== current2.val) return false;
     current1 = current1.next;
     current2 = current2.next;
