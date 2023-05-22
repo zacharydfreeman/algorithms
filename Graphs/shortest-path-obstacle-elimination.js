@@ -35,7 +35,7 @@ const shortestPath = (grid, k) => {
         const nC = c + cD;
         const rowInBounds = 0 <= nR && nR < grid.length;
         const colInBounds = 0 <= nC && nC < grid[0].length;
-        const pos = nR + ',' + nC + moves;
+        const pos = nR + ',' + nC + "," + moves;
         if (rowInBounds && colInBounds && !visited.has(pos)) {
           if (grid[nR][nC] === 0) {
             visited.add(pos);
@@ -51,3 +51,4 @@ const shortestPath = (grid, k) => {
   }
   return -1;
 };
+
