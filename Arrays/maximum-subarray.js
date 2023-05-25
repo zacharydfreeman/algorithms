@@ -11,6 +11,7 @@ Output: 23
 Explanation: The subarray [5,4,-1,7,8] has the largest sum 23.
 */
 
+// Approach: Kadane's
 // O(n) time | O(1) space
 const maxSubArray = (nums) => {
   // declare a maxSum variable that will track maxSum and a maxSoFar variable that will track max at current element in array
@@ -29,9 +30,32 @@ const maxSubArray = (nums) => {
   return maxSum;
 };
 
+// Modified problem to return indexes of the subarray that produces the max sum
+// Approach: Sliding Window
+// O(n) time | O(1) space
+const maxSubArray2 = (nums) => {
+  let currentSum = 0;
+  let maxSum = -Infinity;
+  let l = 0;
+  let maxL;
+  let maxR;
+  for (let r = 0; r < nums.length; r++) {
+    if (currentSum < 0) {
+      currentSum = 0;
+      l = r;
+    }
+    currentSum += nums[r];
+    if (currentSum > maxSum) {
+      maxSum = currentSum;
+      maxL = l;
+      maxR = r;
+    }
+  }
+  return [maxL, maxR];
+};
 
 // O(n^2) time | O(1) space
-const maxSubArray2 = (nums) => {
+const maxSubArray3 = (nums) => {
   // declare max sum variable to -Infinity
   let maxSum = -Infinity;
   // for all subarrays
