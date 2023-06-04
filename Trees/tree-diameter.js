@@ -15,9 +15,48 @@ Explanation: The longest path of the tree is the path 3 - 2 - 1 - 4 - 5.
 
 */
 
-// Approach: Two BFS
+// Approach: Topological Sort
 // O(n) time | O(n) space
 const treeDiameter = (edges) => {
+  const graph = new Array(edges.length + 1).fill(0).map((_) => []);
+  const inDegree = new Array(edges.length + 1).fill(0);
+  for (let [a, b] of edges) {
+    graph[a].push(b);
+    graph[b].push(a);
+    inDegree[a]++;
+    inDegree[b]++;
+  }
+  let layers = 0;
+  let unvisited = edges.length + 1;
+  // fill queue with leaves
+  let queue = [];
+  for (let i = 0; i < inDegree.length; i++) {
+    if (inDegree[i] === 1) queue.push(i);
+  }
+
+  while (unvisited > 2) {
+    unvisited -= queue.length;
+    const nextLevel = [];
+    for (let current of queue) {
+      for (let child of graph[current]) {
+        inDegree[child]--;
+        if (inDegree[child] === 1) nextLevel.push(child);
+      }
+    }
+    queue = nextLevel;
+    layers++;
+  }
+
+  if (unvisited === 1) {
+    return layers * 2;
+  } else {
+    return layers * 2 + 1;
+  }
+};
+
+// Approach: Two BFS
+// O(n) time | O(n) space
+const treeDiameter2 = (edges) => {
   if (edges.length === 0) return 0;
   // create graph
   const graph = createGraph(edges);
@@ -70,6 +109,3 @@ const createGraph = (edges) => {
   }
   return graph;
 };
-
-const edges = [[0, 1]];
-console.log(treeDiameter(edges));
