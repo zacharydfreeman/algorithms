@@ -60,9 +60,3 @@ const countNegatives3 = (grid) => {
   }
   return count;
 };
-
-const grid = [
-  [1, -1],
-  [-1, -1],
-];
-console.log(countNegatives(grid));
