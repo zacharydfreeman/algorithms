@@ -22,7 +22,7 @@ Explanation: The order is invalid, so return "".
 const alienOrder = (words) => {
   // build graph
   const graph = {};
-  // put all chars in graph
+  // put all chars in graph.
   for (let word of words) {
     for (let char of word) {
       if (!(char in graph)) graph[char] = [];
