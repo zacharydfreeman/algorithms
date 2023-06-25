@@ -7,7 +7,7 @@ Output: 4
 Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.
  */
 
-// Approach: Intelligent sequence building with binary search
+// Approach: Intelligent sequence building with binary search.
 // O(nlog(n)) time | O(n) space
 const lengthOfLIS = (nums) => {
   const seq = [nums[0]];
