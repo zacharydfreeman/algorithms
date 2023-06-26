@@ -35,3 +35,25 @@ const smallestFromLeaf = (root) => {
   dfs(root, '');
   return string;
 };
+
+// Approach: Backtracking
+// O(n) time | O(n) space
+const smallestFromLeaf2 = (root) => {
+  let ans = '';
+  const dfs = (root, string) => {
+    if (!root) return;
+    if (!root.left && !root.right) {
+      const nextString = [...string, String.fromCharCode(root.val + 97)]
+        .reverse()
+        .join('');
+      if (nextString < ans || ans === '') ans = nextString;
+      return;
+    }
+    string.push(String.fromCharCode(root.val + 97));
+    dfs(root.left, string);
+    dfs(root.right, string);
+    string.pop();
+  };
+  dfs(root, []);
+  return ans;
+};
