@@ -20,7 +20,6 @@ const findItinerary = (tickets) => {
   const graph = createGraph(tickets);
   // we need a path and visited
   const path = [];
-
   const dfs = (curr) => {
     const routes = graph[curr];
     while (routes.length) {
