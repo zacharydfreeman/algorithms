@@ -25,7 +25,7 @@ class DataStore {
 
   add(key, value) {
     if (key in this.changeEvents) {
-      if (this.globalEvents[key] !== value) {
+      if (this.store[key] !== value) {
         const callbacks = this.changeEvents[key];
         const oldVal = this.store[key];
         for (let cb of callbacks) {
