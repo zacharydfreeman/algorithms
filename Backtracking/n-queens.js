@@ -44,3 +44,26 @@ const isValid = (row, col, colPositions) => {
 
   return true;
 };
+
+const total = (n) => {
+  let count = 0;
+  const columns = new Array(n).fill(0);
+  const diag1 = new Array(n).fill(0);
+  const diag2 = new Array(n).fill(0);
+  const dfs = (row) => {
+    if (row === n) {
+      count++;
+      return;
+    }
+    for (let i = 0; i < n; i++) {
+      if (columns[i] || diag1[i + row] || diag2[i - row + n - 1]) continue;
+      columns[i] = diag1[i + row] = diag2[i - row + n - 1] = 1;
+      dfs(row + 1);
+      columns[i] = diag1[i + row] = diag2[i - row + n - 1] = 0;
+    }
+  };
+  dfs(0);
+  return count;
+};
+
+console.log(total(4));
