@@ -37,3 +37,25 @@ const permute2 = (nums) => {
   dfs(0);
   return output;
 };
+
+const p = (n) => {
+  const permutations = [];
+  const used = new Array(n + 1).fill(false);
+  const permutation = [];
+  const dfs = () => {
+    if (permutation.length === n) {
+      permutations.push([...permutation]);
+      return;
+    }
+    for (let i = 1; i <= n; i++) {
+      if (used[i]) continue;
+      permutation.push(i);
+      used[i] = true;
+      dfs();
+      permutation.pop();
+      used[i] = false;
+    }
+  };
+  dfs();
+  return permutations;
+};
