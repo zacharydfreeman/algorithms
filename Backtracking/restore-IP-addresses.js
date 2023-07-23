@@ -45,5 +45,3 @@ const isValid = (s) => {
   if (num < 0 || num > 255) return false;
   return s.length == String(num).length;
 };
-
-console.log(restoreIpAddresses('25525511135'));
