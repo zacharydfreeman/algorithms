@@ -68,3 +68,8 @@ class SegmentTree {
     }
   }
 }
+
+/* 
+range(1, 5)
+
+*/
